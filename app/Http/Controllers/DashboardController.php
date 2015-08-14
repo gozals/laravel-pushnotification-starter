@@ -41,6 +41,9 @@ class DashboardController extends Controller {
 	}
 
     public function postIndex(){
+
+        $gcm_server_api_key = "YOUR GCM SERVER API KEY HERE";
+
         if( Input::get('send_to') == "broadcast_all"){
             $users = User::whereNotNull('gcmid')->get();
             foreach($users as $user){
@@ -52,7 +55,7 @@ class DashboardController extends Controller {
 
 
                 PushNotification::app(['environment' => 'local',
-                    'apiKey'      => 'AIzaSyDJDD5mJcM4ylLWwro60vBRZmexA3nZQ6U',
+                    'apiKey'      => $gcm_server_api_key,
                     'service'     => 'gcm'])
                     ->to($user->gcmid)
                     ->send($send_text);
@@ -67,7 +70,7 @@ class DashboardController extends Controller {
             //dd($send_text);
 
             PushNotification::app(['environment' => 'local',
-                'apiKey'      => 'AIzaSyDJDD5mJcM4ylLWwro60vBRZmexA3nZQ6U',//setting server api key
+                'apiKey'      => $gcm_server_api_key,
                 'service'     => 'gcm'])
                 ->to($user->gcmid)
                 ->send($send_text);
