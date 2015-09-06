@@ -2,13 +2,13 @@
 
 Make sure you have already composer installed
 
-Run composer install or composer update in root folder
+Run `composer install` or `composer update` in root folder
 
 Setup database setting in config/database.php
 
-Run php artisan migrate to generate database
+Run `php artisan migrate` to generate database
 
-Run php artisan db:seed
+Run `php artisan db:seed`
 
 set your own gcm server key on dashboardcontroller
 
